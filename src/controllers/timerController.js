@@ -5,10 +5,10 @@ exports.register = async (req, res) => {
   try {
     let newUser = new User(req.body);
     let user = await newUser.save();
-    res.status(201).json({ message: `Creation d'utilisateur ${user.email}` });
+    res.status(201).json({ message: `Creation de l' User ${user.email}` });
   } catch (error) {
     console.log(error);
-    res.status(401).json({ message: "Requete Invalide !" });
+    res.status(401).json({ message: " requeste Invalide" });
   }
 };
 
@@ -17,7 +17,7 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      res.status(500).json({ message: "Utilisateur non trouver!" });
+      res.status(500).json({ message: "User pas trouver!" });
       return;
     }
 
@@ -32,10 +32,10 @@ exports.login = async (req, res) => {
       });
       res.status(200).json({ token });
     } else {
-      res.status(401).json({ message: "Email ou  password incorrect" });
+      res.status(401).json({ message: "Email or password incorrect" });
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Une erreur a eter detecter.!" });
+    res.status(500).json({ message: "Une erreur a eter detecter!." });
   }
 };
